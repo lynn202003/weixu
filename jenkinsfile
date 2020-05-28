@@ -1,0 +1,6 @@
+node {  
+    stage('Build') { 
+        // 这里是解释
+    bat label: '', script: 'robot --pythonpath . -s d-1role -s d-20role -s role_management API/tc/d-emptydata'
+    }
+}
