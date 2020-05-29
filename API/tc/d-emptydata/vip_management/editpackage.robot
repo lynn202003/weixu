@@ -166,7 +166,7 @@ Variables  API/cfg.py
 编辑套餐---pack0002021
     [Documentation]     编辑套餐时packagee为9个有效字符
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31       nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
-    ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中是国是不国是你是     vipCycle=31      nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
+    ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中是国是不国是你是是中     vipCycle=31      nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     should be true       $updatePackageInfo["error_msg"]=="套餐名称设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
@@ -305,8 +305,7 @@ Variables  API/cfg.py
     [Documentation]     编辑套餐时originalPrice参数不传
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31     nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]     productType=2         package=中中是国     vipCycle=365     nowPrice=${1}     isRecommend=${1}
-    ${errors}    Evaluate  "$.originalPrice" in $updatePackageInfo["errors"]
-    run keyword if   ${errors}    log to console    pass
+    should be true    $updatePackageInfo["error_msg"]=="套餐原价设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 编辑套餐---pack0002041
@@ -329,7 +328,7 @@ Variables  API/cfg.py
     [Documentation]     编辑套餐时originalPrice为10001
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31    nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中中是     vipCycle=365     nowPrice=${1}    originalPrice=${10001}    isRecommend=${1}
-    should be true       $updatePackageInfo["error_msg"]=="新增成功！"
+    should be true       $updatePackageInfo["error_msg"]=="套餐原价设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 
@@ -337,7 +336,7 @@ Variables  API/cfg.py
     [Documentation]     编辑套餐时originalPrice为0
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31     nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中中是国     vipCycle=365    nowPrice=${1}    originalPrice=${0}    isRecommend=${1}
-    should be true       $updatePackageInfo["error_msg"]=="新增成功！"
+    should be true       $updatePackageInfo["error_msg"]=="套餐原价设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 
@@ -346,14 +345,14 @@ Variables  API/cfg.py
     [Documentation]     编辑套餐时originalPrice为小数
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31     nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中中是国     vipCycle=365    nowPrice=${1}   originalPrice=${0.2}    isRecommend=${1}
-    should be true       $updatePackageInfo["error_msg"]=="新增成功！"
+    should be true       $updatePackageInfo["error_msg"]=="套餐原价设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 编辑套餐---pack0002046
     [Documentation]     编辑套餐时originalPrice为负数
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31     nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中中是国    vipCycle=365     nowPrice=${1}    originalPrice=${-9}   isRecommend=${1}
-    should be true       $updatePackageInfo["error_msg"]=="新增成功！"
+    should be true       $updatePackageInfo["error_msg"]=="套餐原价设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 编辑套餐---pack0002047
@@ -384,8 +383,7 @@ Variables  API/cfg.py
     [Documentation]     编辑套餐时isRecommend参数不传
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31     nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中中是    vipCycle=365     nowPrice=${1}    originalPrice=${1}
-    ${errors}    Evaluate  "$.isRecommend" in $updatePackageInfo["errors"]
-   run keyword if   ${errors}    log to console    pass
+    should be true       $updatePackageInfo["error_msg"]=="推荐参数设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 

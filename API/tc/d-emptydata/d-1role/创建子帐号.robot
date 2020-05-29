@@ -96,25 +96,25 @@ Variables  API/cfg.py
     [Documentation]     创建子帐号时name为空
     ${getrolelists}    GetRoleList     ${local_url}    roleName=${EMPTY}        pageSize=10            pageNum=1
     ${adduser}    AddSysUser     ${local_url}   userName=123652    name=${EMPTY}    password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
-    should be true     $adduser["error_msg"]=="用户名为2-10位字符组成！"
+    should be true     $adduser["error_msg"]=="用户名为2-12位字符组成！"
 
 创建子帐号---sysuser0007015
     [Documentation]     创建子帐号时name为空格
     ${getrolelists}    GetRoleList     ${local_url}    roleName=${EMPTY}        pageSize=10            pageNum=1
     ${adduser}    AddSysUser     ${local_url}   userName=251252    name=${SPACE}    password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
-    should be true     $adduser["error_msg"]=="用户名为2-10位字符组成！"
+    should be true     $adduser["error_msg"]=="用户名为2-12位字符组成！"
 
 创建子帐号---sysuser0007016
     [Documentation]     创建子帐号时name参数不传
     ${getrolelists}    GetRoleList     ${local_url}    roleName=${EMPTY}        pageSize=10            pageNum=1
     ${adduser}    AddSysUser     ${local_url}   userName=251252    password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
-    should be true     $adduser["error_msg"]=="用户名为2-10位字符组成！"
+    should be true     $adduser["error_msg"]=="用户名为2-12位字符组成！"
 
 创建子帐号---sysuser0007017
     [Documentation]     创建子帐号时name输入1位有效字符
     ${getrolelists}    GetRoleList     ${local_url}    roleName=${EMPTY}        pageSize=10            pageNum=1
     ${adduser}    AddSysUser     ${local_url}   userName=251252    name=你    password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
-    should be true     $adduser["error_msg"]=="用户名为2-10位字符组成！"
+    should be true     $adduser["error_msg"]=="用户名为2-12位字符组成！"
 
 创建子帐号---sysuser0007018
     [Documentation]     创建子帐号时name输入2位有效字符
@@ -124,17 +124,17 @@ Variables  API/cfg.py
     [teardown]   Run Keywords   db_connect    AND   deletedata        sys_user         ${adduser}[data][userId]
 
 创建子帐号---sysuser0007019
-    [Documentation]     创建子帐号时name输入10位有效字符
+    [Documentation]     创建子帐号时name输入12位有效字符
     ${getrolelists}    GetRoleList     ${local_url}    roleName=${EMPTY}        pageSize=10            pageNum=1
-    ${adduser}    AddSysUser     ${local_url}   userName=251252    name=1258kokokl   password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
+    ${adduser}    AddSysUser     ${local_url}   userName=251252    name=1258kokoklji   password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
     should be true     $adduser["data"]["userName"]=="251252"
     [teardown]   Run Keywords   db_connect    AND   deletedata        sys_user         ${adduser}[data][userId]
 
 创建子帐号---sysuser0007020
-    [Documentation]     创建子帐号时name输入11位有效字符
+    [Documentation]     创建子帐号时name输入13位有效字符
     ${getrolelists}    GetRoleList     ${local_url}    roleName=${EMPTY}        pageSize=10            pageNum=1
-    ${adduser}    AddSysUser     ${local_url}   userName=251252    name=1258kokokl2   password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
-    should be true     $adduser["error_msg"]=="用户名为2-10位字符组成！"
+    ${adduser}    AddSysUser     ${local_url}   userName=251252    name=1258kokokl2ij   password=123koll    roleId= ${getrolelists}[data][list][0][roleId]
+    should be true     $adduser["error_msg"]=="用户名为2-12位字符组成！"
 
 
 创建子帐号---sysuser0007021

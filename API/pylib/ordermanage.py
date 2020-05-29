@@ -14,7 +14,7 @@ class ordermanage():
         URL=f'{url}/api/order/getOrderList'
         resp=requests.get(URL,headers={'Content-Type': 'application/json','Authorization':self.token},params=params)
         result=resp.json()
-        if "orderId" in result[0]:
+        if "totalSize" in result["data"]:
             log1.info("成功获取订单列表")
             return result
 
@@ -22,5 +22,6 @@ class ordermanage():
             log1.error("获取订单列表失败")
 
 if __name__ == '__main__':
-    ordermanage()
+    c=ordermanage(common.token)
+    c.getOrderList(local_url)
 

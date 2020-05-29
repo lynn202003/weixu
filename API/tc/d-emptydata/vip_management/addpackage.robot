@@ -209,7 +209,6 @@ Variables  API/cfg.py
     [Documentation]     添加套餐时nowPrice为有大于1小于10000的三位小数
     ${addpackage}     addPackage      ${local_url}     productType=1     package=蝇是     vipCycle=365   nowPrice=${1.234}    originalPrice=${1}     isRecommend=${1}
     should be true       $addpackage["error_msg"]=="套餐的当前售价设置错误！"
-    deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
 
 添加套餐---pack00010034
