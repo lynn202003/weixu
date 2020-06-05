@@ -166,7 +166,7 @@ Variables  API/cfg.py
 编辑套餐---pack0002021
     [Documentation]     编辑套餐时packagee为9个有效字符
     ${addpackage}     addPackage      ${local_url}     productType=1     package=测试版     vipCycle=31       nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
-    ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中是国是不国是你是是中     vipCycle=31      nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
+    ${updatePackageInfo}     updatePackageInfo      ${local_url}    packageId=${addpackage}[data][packageId]      productType=2         package=中是国是不国是你是     vipCycle=31      nowPrice=${1}      originalPrice=${1}     isRecommend=${1}
     should be true       $updatePackageInfo["error_msg"]=="套餐名称设置错误！"
     deletePackageInfo       ${local_url}     id=${addpackage}[data][packageId]
 
